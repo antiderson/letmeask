@@ -1,10 +1,21 @@
-import  { Button } from './components/Button'
-import { Home } from './pages/Home'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Home } from "./pages/Home";
+import { NewRoom } from "./pages/NewRoom";
+import { AuthContextProvider } from './contexts/AuthContext';
+import { Room } from './pages/Room';
 
-export default App;
+ 
+ function App() {
 
-function App() {
   return (
-    <Home />
+   <BrowserRouter>       
+         <Switch>
+         <Route path="/" exact component={Home} />
+         <Route path="/rooms/new" exact component={NewRoom} />
+         <Route path="/rooms/:id" component={Room} />
+       </Switch>     
+   </BrowserRouter>
   );
 }
+
+export default App;
